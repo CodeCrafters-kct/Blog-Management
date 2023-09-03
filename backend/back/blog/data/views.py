@@ -9,7 +9,7 @@ from .serializers import *
 @csrf_exempt
 def auth(request):
     if request.method=='GET':
-        data=JSONParser().parse(request)
+        data=JSONParser().parse(request)['body']
         username=data['username']
         password=data['password']
         obj=appuser.objects.filter(username=username,password=password)
@@ -19,7 +19,8 @@ def auth(request):
         else:
             return JsonResponse({"message":"No match"})
     elif request.method=='POST':
-        data=JSONParser().parse(request)
+        data=JSONParser().parse(request)['body']
+        print(data)
         username=data['username']
         obj=appuser.objects.filter(username=username)
         print(obj)
@@ -47,7 +48,7 @@ def blo(request,id=-1):
             obj_serializer = BlogSerializer(obj, many=True)
             return JsonResponse(obj_serializer.data,safe=False)
     elif request.method=="POST":
-        data=JSONParser().parse(request)
+        data=JSONParser().parse(request)['body']
         uid=data["uid"]
         title=data["title"]
         text=data["text"]
@@ -89,7 +90,7 @@ def update(request,uid=-1,id=-1):
         else:
             return JsonResponse({"message":"user not found"})
     if request.method=="POST":
-        data=JSONParser().parse(request)
+        data=JSONParser().parse(request)['body']
         bid=data["bid"]
         title=data["title"]
         text=data["text"]
@@ -104,7 +105,7 @@ def update(request,uid=-1,id=-1):
         else:
             return JsonResponse({"message":"blog not found"})
     if request.method=="DELETE":
-        data=JSONParser().parse(request)
+        data=JSONParser().parse(request)['body']
         bid=data["bid"]
         obj=blog.objects.filter(bid=bid)
         if obj:

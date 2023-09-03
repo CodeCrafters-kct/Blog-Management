@@ -14,242 +14,172 @@ const AppProvider=({children})=>{
     const [userblog,setUserBlog]=useState([])
 
     const registeUser=async(username,password)=>{
-        fetch(baseURL+'appuser',{
-            method:'POST',
+        const res=await axios.post(baseURL+'appuser',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({
-                username:username,
-                password:password
-            })
-        })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
-            }else{
-                alert("ADDED!!!")
+            body:{
+                "username":username,
+                "password":password
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })
+        });
+        if(res.data.message){
+            alert(res.data.message);
+        }else{
+            alert("ADDED!!!")
+        }
     }
 
     const authUser=async(username,password)=>{
-        fetch(baseURL+'appuser',{
-            method:'GET',
+        const res=await axios.get(baseURL+'appuser',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({
-                username:username,
-                password:password
-            })
+            body:{
+                "username":username,
+                "password":password
+            }
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
                 setIsLogedIn(true);
                 setUserName(username);
-                SetUid(result.uid)
+                SetUid(res.data.uid)
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })  
     }
 
     const getallblog= async()=>{
-        fetch(baseURL+'blog/',{
-            method:'GET',
+        const res=await axios.get(baseURL+'blog',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             }
-        })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+        });
+            if(res.data.message){
+                alert(res.data.message);
             }else{
-                setBlogList(result);
+                setBlogList(res.data);
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })  
     }
 
     const getOneBlog=async(id)=>{
-        fetch(baseURL+'blog/'+id,{
-            method:'GET',
+        const res=await axios.get(baseURL+'blog/'+id,{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             }
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
-                setConBlog(result);
+                setConBlog(res.data);
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })  
     }
 
     const addBlog=async(uid,title,text,btype)=>{
-        fetch(baseURL+'blog/',{
-            method:'POST',
+        const res=await axios.post(baseURL+'blog',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({
-                uid:uid,                         
-                title:title,
-                text:text,
-                btype:btype
-            })
+            body:{
+                "uid":uid,                         
+                "title":title,
+                "text":text,
+                "btype":btype
+            }
 
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
-                setBlogList(result)
+                setBlogList(res.data)
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })
     }
 
     const getUserBlog= async (uid)=>{
-        fetch(baseURL+'update/'+id,{
-            method:'GET',
+        const res=await axios.get(baseURL+'update/'+id,{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             }
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
-                setUserBlog(result)
+                setUserBlog(res.data)
             }
-        },
-        (error)=>{
-            alert('Failed');
-        }) 
     }
 
     const updateBlog=async(bid,title,text,btype)=>{
-        fetch(baseURL+'update/',{
-            method:'POST',
+        const res=await axios.post(baseURL+'update',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({
-                bid:bid,                         
-                title:title,
-                text:text,
-                btype:btype
-            })
+            body:{
+                "bid":bid,                         
+                "title":title,
+                "text":text,
+                "btype":btype
+            }
 
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
                 alert("updated!!")
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })
     }
 
     const delBlog=async(bid)=>{
-        fetch(baseURL+'update/',{
-            method:'DELETE',
+        const res=await axios.delete(baseURL+'update',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({
-                bid:bid
-            })
+            body:{
+                "bid":bid
+            }
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
                 alert("Deleted!!!")
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })
     }
 
     const adminChange=async(id,value)=>{
-        fetch(baseURL+'change/'+id+'/'+value,{
-            method:'POST',
+        const res=await axios.post(baseURL+'change/'+id+'/'+value,{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             }
 
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
-                alert(result);
+                alert(res.data);
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })
     }
 
     const adminBlogList= async()=>{
-        fetch(baseURL+'admin/',{
-            method:'POST',
+        const res=await axios.post(baseURL+'admin',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             }
 
         })
-        .then(res=>res.json())
-        .then((result)=>{
-            if(result.hasOwnProperty("message")){
-                alert(result.message);
+            if(res.data.message){
+                alert(res.data.message);
             }else{
-                setAdminBlog(result)
+                setAdminBlog(res.data)
             }
-        },
-        (error)=>{
-            alert('Failed');
-        })
     }
 
     return <AppContext.Provider value={{isLogedIn,userName,uid,blogList,conBlog,adminBlog,userblog,setIsLogedIn,setUserName,SetUid,
