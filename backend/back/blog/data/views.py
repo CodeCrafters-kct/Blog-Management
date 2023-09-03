@@ -8,7 +8,7 @@ from .serializers import *
 
 @csrf_exempt
 def auth(request):
-     if request.method=='GET':
+    if request.method=='GET':
         data=JSONParser().parse(request)
         username=data['username']
         password=data['password']
@@ -18,10 +18,11 @@ def auth(request):
             return JsonResponse(link_serializer.data,safe=False)
         else:
             return JsonResponse({"message":"No match"})
-     elif request.method=='POST':
+    elif request.method=='POST':
         data=JSONParser().parse(request)
         username=data['username']
         obj=appuser.objects.filter(username=username)
+        print(obj)
         if obj:
             return JsonResponse({"message":"User Already Exists"})
         link_serializer=AppUserSerializer(data=data)
