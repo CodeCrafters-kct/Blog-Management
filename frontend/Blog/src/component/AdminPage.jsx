@@ -1,16 +1,20 @@
 import React, { useState } from "react";
+import {useGlobalContext} from "../context";
+import { useNavigate } from 'react-router-dom'
 
-function Home() {
+function AdminPage() {
+  const navigate = useNavigate();
     const [boo, setBoo] = useState(false)
-    function click(){
-        setBoo(true)
+    const {adminChange,adminBlog}=useGlobalContext();
+    console.log(adminBlog)
+    function checkout(id,value){
+      adminChange(id,value)
     }
-
     return <aside >
         <div className="row row-1" >
             <div className="container">
                     <div className="container-fluid">
-                        <a href="#" className="txt" data-bs-toggle="modal" data-bs-target="#Modal"onClick={click} type="text">Welcome Admin</a>
+                        <a href="#" className="txt" data-bs-toggle="modal" data-bs-target="#Modal" onClick={()=>{checkout(10,1)}} type="text">Welcome Admin</a>
                     </div>
             </div>
         </div>
@@ -38,4 +42,4 @@ function Home() {
     </aside>
 }
 
-export default Home;
+export default AdminPage;

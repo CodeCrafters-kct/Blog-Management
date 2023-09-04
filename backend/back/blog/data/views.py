@@ -21,15 +21,18 @@ def auth(request):
     elif request.method=='POST':
         data=JSONParser().parse(request)['body']
         username=data['username']
+        password=data['password']
         obj=appuser.objects.filter(username=username)
+        print(obj)
         if obj:
             return JsonResponse({"message":"User Already Exists"})
-        link_serializer=AppUserSerializer(data=data)
-        if link_serializer.is_valid():
-            link_serializer.save()
-            return JsonResponse({"message":"ADDED"})
-        else:
-            return JsonResponse({"message":"Failed"})
+        ob1=appuser.objects.create(username=username,password=password)
+        ob1.save()
+        print(ob1)
+        obj_serializer = AppUserSerializer(ob1)
+        print(obj_serializer)
+        return JsonResponse(obj_serializer.data,safe=False)
+
         
 @csrf_exempt
 def blo(request,id=-1):
@@ -51,7 +54,9 @@ def blo(request,id=-1):
         title=data["title"]
         text=data["text"]
         btype=data["btype"]
+        print(uid)
         appObj=appuser.objects.filter(uid=uid)
+        print(appObj)
         if appObj:
             obj=blog.objects.create(uid=appObj[0],title=title,text=text,btype=btype,state=False)
             obj.save()
@@ -125,3 +130,16 @@ def change(request,id=-1,value=-1):
             return JsonResponse({"message":"done"})
         else:
             return JsonResponse({"message":"Object not found"})
+
+@csrf_exempt
+def getuser(request):
+    if request.method=='POST':
+        data=JSONParser().parse(request)['body']
+        username=data['username']
+        password=data['password']
+        obj=appuser.objects.filter(username=username,password=password)
+        if obj:
+            link_serializer=AppUserSerializer(obj[0])
+            return JsonResponse(link_serializer.data,safe=False)
+        else:
+            return JsonResponse({"message":"No match"})

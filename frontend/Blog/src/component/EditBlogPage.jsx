@@ -20,16 +20,16 @@ function EditBlogPage() {
                         <input type="text" className="form-control rounded-3" id="floatingInput" placeholder="Blog Title"></input>
                         <label htmlFor="floatingInput">Blog Title</label>
                       </div>
-                      <div class="btn-group dropend">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div className="btn-group dropend">
+                        <button type="button" className="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           Category
                         </button>
-                        <ul class="dropdown-menu">
-                          <li onClick={()=> setCategory("Action")}><a class="dropdown-item">Action</a></li>
-                          <li onClick={()=> setCategory("Thriller")}><a class="dropdown-item">Thirller</a></li>
-                          <li onClick={()=> setCategory("Fantasy")}><a class="dropdown-item">Fantasy</a></li>
-                          <li onClick={()=> setCategory("Animation")}><a class="dropdown-item">Animation</a></li>
-                          <li onClick={()=> setCategory("Science Fiction")}><a class="dropdown-item">Science Fiction</a></li>
+                        <ul className="dropdown-menu">
+                          <li onClick={()=> setCategory("Action")}><a className="dropdown-item">Action</a></li>
+                          <li onClick={()=> setCategory("Thriller")}><a className="dropdown-item">Thirller</a></li>
+                          <li onClick={()=> setCategory("Fantasy")}><a className="dropdown-item">Fantasy</a></li>
+                          <li onClick={()=> setCategory("Animation")}><a className="dropdown-item">Animation</a></li>
+                          <li onClick={()=> setCategory("Science Fiction")}><a className="dropdown-item">Science Fiction</a></li>
 
                         </ul> 
                       </div>
@@ -39,8 +39,8 @@ function EditBlogPage() {
                       </div>
 
                       <div className="form-floating mb-3">
-                        <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <div className="form-floating">
+                        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                         <label htmlFor="floatingPassword">Blog Content</label>
                       </div>
                       </div>
@@ -60,4 +60,4 @@ function EditBlogPage() {
   )
 }
 
-export default EditBlogPagef
+export default EditBlogPage

@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
+import {useGlobalContext} from "../context";
+import { useNavigate } from 'react-router-dom'
 
 function AddBlogPage() {
+   const navigate = useNavigate();
    const[category,setCategory]=useState("")
+   const [title,setTitle]=useState("")
+   const [con,setCon]=useState("")
+   const {uid,addBlog}=useGlobalContext();
+   function get(){
+    alert(con)
+    addBlog(title,con,category);
+    navigate('/blogview')
+   }
   return (
     <>
       <div>
@@ -17,34 +28,34 @@ function AddBlogPage() {
                   <div className="modal-body p-5 pt-0">
                     <form className="">
                       <div className="form-floating mb-3">
-                        <input type="text" className="form-control rounded-3" id="floatingInput" placeholder="Blog Title"></input>
+                        <input type="text" className="form-control rounded-3" id="floatingInput" onChange={(e)=>{setTitle(e.target.value)}} placeholder="Blog Title"></input>
                         <label htmlFor="floatingInput">Blog Title</label>
                       </div>
-                      <div class="btn-group dropend">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div className="btn-group dropend">
+                        <button type="button" className="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                           Category
                         </button>
-                        <ul class="dropdown-menu">
-                          <li onClick={()=> setCategory("Action")}><a class="dropdown-item">Action</a></li>
-                          <li onClick={()=> setCategory("Thriller")}><a class="dropdown-item">Thirller</a></li>
-                          <li onClick={()=> setCategory("Fantasy")}><a class="dropdown-item">Fantasy</a></li>
-                          <li onClick={()=> setCategory("Animation")}><a class="dropdown-item">Animation</a></li>
-                          <li onClick={()=> setCategory("Science Fiction")}><a class="dropdown-item">Science Fiction</a></li>
+                        <ul className="dropdown-menu">
+                          <li onClick={()=> setCategory("Action")}><a className="dropdown-item">Action</a></li>
+                          <li onClick={()=> setCategory("Thriller")}><a className="dropdown-item">Thirller</a></li>
+                          <li onClick={()=> setCategory("Fantasy")}><a className="dropdown-item">Fantasy</a></li>
+                          <li onClick={()=> setCategory("Animation")}><a className="dropdown-item">Animation</a></li>
+                          <li onClick={()=> setCategory("Science Fiction")}><a className="dropdown-item">Science Fiction</a></li>
 
                         </ul> 
                       </div>
                       <div className="form-floating mb-3">
-                        <input type="text" className="form-control rounded-3" id="floatingInput" placeholder="Select a catogory" value={category}></input>
+                        <input type="text" className="form-control rounded-3" id="floatingInput"  placeholder="Select a catogory" value={category}></input>
                         <label htmlFor="floatingInput"></label>
                       </div>
 
                       <div className="form-floating mb-3">
-                        <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <div className="form-floating">
+                        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea" onChange={(e)=>{setCon(e.target.value)}}></textarea>
                         <label htmlFor="floatingPassword">Blog Content</label>
                       </div>
                       </div>
-                      <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Submit</button>
+                      <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={get}>Submit</button>
                       
                       <hr className="my-4"></hr>
 
@@ -53,10 +64,6 @@ function AddBlogPage() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-            <button type="button" className="btn btn-lg btn-primary">Save changes</button>
-            <button type="button" className="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

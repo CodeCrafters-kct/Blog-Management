@@ -1,8 +1,18 @@
 import React , { useState }from "react";
+import {useGlobalContext} from "../context";
+import { useNavigate } from 'react-router-dom'
+
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const {getallblog,registeUser}=useGlobalContext();
+  const handleSubmit=()=>{
+    registeUser(username,password);
+    getallblog();
+    navigate('/blogview'); 
+  }
   return (
     <>
       <div
@@ -48,7 +58,8 @@ function RegisterPage() {
                   className="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
                   type="submit"
                   onClick={() => {
-                    console.log("done");
+                    console.log("check");
+                    handleSubmit();
                   }}
                 >
                   Sign up
