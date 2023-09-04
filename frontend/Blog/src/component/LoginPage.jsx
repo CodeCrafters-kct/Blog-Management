@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './LoginPage.css'
 
 function LoginPage() {
+  const [username,setUsername]=useState("")
+  const [password,setPassword]=useState("")
   return (
     <>
    
@@ -17,14 +19,16 @@ function LoginPage() {
             <div className="modal-body p-5 pt-0">
               <form className="">
                 <div className="form-floating mb-3">
-                  <input type="email" className="form-control rounded-3" id="floatingInput" placeholder="name@example.com"></input>
                   <label htmlFor="floatingInput">Email address</label>
+                  <input type="email" className="form-control rounded-3" id="floatingInput" placeholder="name@example.com" onChange={(e)=>{setUsername(e.target.value)}}></input>
+                  
                 </div>
                 <div className="form-floating mb-3">
-                  <input type="password" className="form-control rounded-3" id="floatingPassword" placeholder="Password"></input>
                   <label htmlFor="floatingPassword">Password</label>
+                  <input type="password" className="form-control rounded-3" id="floatingPassword" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}></input>
+                  
                 </div>
-                <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
+                <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={()=>{console.log("done")}}>Login</button>
                 <small className="text-body-secondary">By clicking Login, you agree to the terms of use.</small>
                 <hr className="my-4"></hr>
                 
