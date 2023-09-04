@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import './LoginPage.css'
 
 function LoginPage() {
-  const [username,setUsername]=useState("")
-  const [password,setPassword]=useState("")
+  
   return (
     <>
    

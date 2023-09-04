@@ -9,6 +9,5 @@ urlpatterns=[
     path("admin/<int:id>/<int:value>",views.admin,name="Admin"),
     path("update/<int:uid>",views.update,name="update"),
     path("update",views.update,name="del"),
-    path("update",views.update,name="up"),
     path("change/<int:id>/<int:value>",views.change,name="change"),
 ]
