@@ -1,14 +1,11 @@
 import './App.css'
-//import BlogView from './component/BlogView'
-import HomePage from './component/HomePage'
-
-import LoginPage from './component/LoginPage'
-import RegisterPage from './component/RegisterPage'
+//import AddBlogPage from './component/AddBlogPage'
+import EditBlogPage from './component/EditBlogPage'
 function App() {
 
   return (
-    <>
-    <HomePage/>
+    <>swethabharathi
+    <EditBlogPage/>
     </>
   )
 }
