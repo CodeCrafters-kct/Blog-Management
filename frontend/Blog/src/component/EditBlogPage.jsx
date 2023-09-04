@@ -60,4 +60,4 @@ function EditBlogPage() {
   )
 }
 
-export default EditBlogPage
+export default EditBlogPagef
