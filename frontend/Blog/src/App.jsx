@@ -1,6 +1,6 @@
 import './App.css'
-//import HomePage from './component/HomePage'
-import BlogView from './component/BlogView'
+//import BlogView from './component/BlogView'
+import HomePage from './component/HomePage'
 
 import LoginPage from './component/LoginPage'
 import RegisterPage from './component/RegisterPage'
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-    <BlogView/>
+    <HomePage/>
     </>
   )
 }
