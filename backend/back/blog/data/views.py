@@ -20,10 +20,8 @@ def auth(request):
             return JsonResponse({"message":"No match"})
     elif request.method=='POST':
         data=JSONParser().parse(request)['body']
-        print(data)
         username=data['username']
         obj=appuser.objects.filter(username=username)
-        print(obj)
         if obj:
             return JsonResponse({"message":"User Already Exists"})
         link_serializer=AppUserSerializer(data=data)
