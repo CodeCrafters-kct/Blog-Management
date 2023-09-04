@@ -1,12 +1,19 @@
 import React from 'react'
 import {useGlobalContext} from "../context"
 import "./blogview.css"
+import { useNavigate } from 'react-router-dom'
 
 function BlogView() {
-  const {userblog}=useGlobalContext();
+  const navigate = useNavigate();
+  const {blogList}=useGlobalContext();
+  function gotoadd(){
+     navigate("/addblog")
+  }
   return (
+    <div>
+    <button type="button" class="btn btn-secondary" onClick={gotoadd}>Add Blog</button>
     <div className="section-center">
-        {userblog.map((blog,index)=>{
+        {blogList.map((blog,index)=>{
           console.log(blog)
             return(<div key={index} className="card help">
             <div className="card-body">
@@ -17,6 +24,7 @@ function BlogView() {
           </div>
             )
         })}
+    </div>
     </div>
   )
 }

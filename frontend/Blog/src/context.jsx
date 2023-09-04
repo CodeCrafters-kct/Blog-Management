@@ -1,9 +1,11 @@
 import React,{useContext,useState,useEffect} from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 
 const AppContext=React.createContext();
 
 const AppProvider=({children})=>{
+    const navigate = useNavigate();
     const baseURL="http://127.0.0.1:8000/";
     const [isLogedIn,setIsLogedIn]=useState(false)
     const [userName,setUserName]=useState("")
@@ -28,11 +30,15 @@ const AppProvider=({children})=>{
             alert(res.data.message);
         }else{
             alert("ADDED!!!")
+            setIsLogedIn(true);
+            setUserName(username);
+            SetUid(res.data.uid);
         }
     }
 
     const authUser=async(username,password)=>{
-        const res=await axios.get(baseURL+'appuser',{
+        alert("hi....")
+        const res=await axios.post(baseURL+'getuser',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
@@ -41,14 +47,18 @@ const AppProvider=({children})=>{
                 "username":username,
                 "password":password
             }
-        })
-            if(res.data.message){
-                alert(res.data.message);
-            }else{
-                setIsLogedIn(true);
-                setUserName(username);
-                SetUid(res.data.uid)
+        });
+        if(res.data.message){
+            alert(res.data.message);
+        }else{
+            setIsLogedIn(true);
+            setUserName(username);
+            if(userName=="admin"){
+                navigate("/admin")
             }
+            alert(res.data.uid);
+            SetUid(res.data.uid);
+        }
     }
 
     const getallblog= async()=>{
@@ -61,6 +71,7 @@ const AppProvider=({children})=>{
             if(res.data.message){
                 alert(res.data.message);
             }else{
+                alert(res.data);
                 setBlogList(res.data);
             }
     }
@@ -79,7 +90,8 @@ const AppProvider=({children})=>{
             }
     }
 
-    const addBlog=async(uid,title,text,btype)=>{
+    const addBlog=async(title,text,btype)=>{
+        console.log(title,text,btype)
         const res=await axios.post(baseURL+'blog',{
             headers:{
                 'Accept':'application/json',
@@ -168,7 +180,7 @@ const AppProvider=({children})=>{
     }
 
     const adminBlogList= async()=>{
-        const res=await axios.post(baseURL+'admin',{
+        const res=await axios.get(baseURL+'admin',{
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'

@@ -10,4 +10,5 @@ urlpatterns=[
     path("update/<int:uid>",views.update,name="update"),
     path("update",views.update,name="del"),
     path("change/<int:id>/<int:value>",views.change,name="change"),
+    path("getuser",views.getuser,name="getuser")
 ]
