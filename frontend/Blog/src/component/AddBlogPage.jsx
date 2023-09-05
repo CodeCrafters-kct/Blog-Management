@@ -9,7 +9,6 @@ function AddBlogPage() {
    const [con,setCon]=useState("")
    const {uid,addBlog}=useGlobalContext();
    function get(){
-    alert(con)
     addBlog(title,con,category);
     navigate('/blogview')
    }

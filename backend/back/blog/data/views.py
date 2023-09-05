@@ -120,11 +120,13 @@ def update(request,uid=-1,id=-1):
 @csrf_exempt
 def change(request,id=-1,value=-1):
     if request.method=="POST":
-        obj=blog.objects.filter(bid=id)[0]
+        print(id)
+        obj=blog.objects.filter(bid=id)
+        print(obj)
         if obj:
             if value==1:
-                obj.state=True
-                obj.save()
+                obj[0].state=True
+                obj[0].save()
             else:
                 obj.delete()
             return JsonResponse({"message":"done"})

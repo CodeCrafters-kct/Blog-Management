@@ -37,7 +37,6 @@ const AppProvider=({children})=>{
     }
 
     const authUser=async(username,password)=>{
-        alert("hi....")
         const res=await axios.post(baseURL+'getuser',{
             headers:{
                 'Accept':'application/json',
@@ -56,7 +55,6 @@ const AppProvider=({children})=>{
             if(userName=="admin"){
                 navigate("/admin")
             }
-            alert(res.data.uid);
             SetUid(res.data.uid);
         }
     }
@@ -71,7 +69,6 @@ const AppProvider=({children})=>{
             if(res.data.message){
                 alert(res.data.message);
             }else{
-                alert(res.data);
                 setBlogList(res.data);
             }
     }
