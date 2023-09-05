@@ -42,24 +42,24 @@ function HomePage() {
             <img src={img} className="icon-square d-inline-flex align-items-center justify-content-center fs-2 mb-3" alt=""></img>
               <svg className="bi" width="1em" height="1em"></svg>
             </div>
-            <h3 className="fs-2 text-body-emphasis">Feature 1</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 className="fs-2 text-body-emphasis">Hang onto your memories</h3>
+            <p>Save the moments that matter. Blogger lets you safely store thousands of posts, photos, and more with Google.</p>
           </div>
           <div className="feature col">
             <div>
             <img src={img} className="icon-square d-inline-flex align-items-center justify-content-center fs-2 mb-3" alt=""></img>
               <svg className="bi" width="1em" height="1em"></svg>
             </div>
-            <h3 className="fs-2 text-body-emphasis">Feature 2</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 className="fs-2 text-body-emphasis">Know your audience</h3>
+            <p>Find out which posts are a hit with Blogger's built-in analytics. You'll see where your audience is coming from and what they're interested in.</p>
           </div>
           <div className="feature col">
             <div>
             <img src={img} className="icon-square d-inline-flex align-items-center justify-content-center fs-2 mb-3" alt=""></img>
               <svg className="bi" width="1em" height="1em"></svg>
             </div>
-            <h3 className="fs-2 text-body-emphasis">Feature 3</h3>
-            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+            <h3 className="fs-2 text-body-emphasis">Blogger Friendly</h3>
+            <p>Non-techies who want some “regular website” functionality along with a blog.</p>
           </div>
         </div>
       </div>
