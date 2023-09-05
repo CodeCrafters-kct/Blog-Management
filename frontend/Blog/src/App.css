@@ -358,7 +358,7 @@ ul {
 }
 body{
   background: rgb(34,193,195);
-  background: linear-gradient(0deg,rgb(34,193,195,1)0%,rgba(121,32,153,1)86%);
+  background: linear-gradient(180deg,rgb(34,193,195,1)0%,rgba(121,32,153,1)86%);
   background-attachment: fixed;
 }
 

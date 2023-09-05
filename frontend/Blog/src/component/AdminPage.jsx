@@ -4,17 +4,26 @@ import { useNavigate } from 'react-router-dom';
 
 function AdminPage() {
   const navigate = useNavigate();
-    const [boo, setBoo] = useState(false)
+    const [boo, setBoo] = useState(true)
+    const [id,SetId]=useState(-1)
     const {adminChange,adminBlog}=useGlobalContext();
+
     console.log(adminBlog)
-    function checkout(id,value){
+    function setting({id,index}){
+      setBoo(true)
+      SetId(id);
+      alert(boo)
+    }
+    function checkout(value){
+      alert(value)
       adminChange(id,value)
+
     }
     return <aside >
         <div className="row row-1" >
             <div className="container">
-                    <div className="container-fluid">
-                        <a href="#" className="txt" type="text">Welcome Admin</a>
+                    <div className="container-fluid mt-4">
+                        <a className="d-flex justify-content-center h1">Welcome Admin</a>
                     </div>
             </div>
         </div>
@@ -24,7 +33,7 @@ function AdminPage() {
             console.log(blog)
               return(<div key={index} className="card help mt-3">
               <div className="card-body">
-                <h5 className="card-title"  data-bs-toggle="modal" data-bs-target="#Modal" onClick={()=>{console.log(adminBlog);setBoo(true)}}>{blog.title}</h5>
+                <h5 className="card-title"  data-bs-toggle="modal"  key={index} data-bs-target="#Modal" onClick={()=>{setting({index:index})}}>{blog.title}</h5>
               </div>
             </div>
               )
@@ -43,8 +52,8 @@ function AdminPage() {
             <div className="modal-body">
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">reject</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button className="btn btn-secondary" onClick={()=>checkout(0)} >reject</button>
+              <button className="btn btn-primary" onClick={()=>checkout(1)}>Submit</button>
             </div>
           </div>
         </div>
