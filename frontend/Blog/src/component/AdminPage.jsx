@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {useGlobalContext} from "../context";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function AdminPage() {
   const navigate = useNavigate();
@@ -14,9 +14,22 @@ function AdminPage() {
         <div className="row row-1" >
             <div className="container">
                     <div className="container-fluid">
-                        <a href="#" className="txt" data-bs-toggle="modal" data-bs-target="#Modal" onClick={()=>{checkout(10,1)}} type="text">Welcome Admin</a>
+                        <a href="#" className="txt" type="text">Welcome Admin</a>
                     </div>
             </div>
+        </div>
+        <div className="section-center">
+        <div>
+          {adminBlog.map((blog,index)=>{ 
+            console.log(blog)
+              return(<div key={index} className="card help mt-3">
+              <div className="card-body">
+                <h5 className="card-title"  data-bs-toggle="modal" data-bs-target="#Modal" onClick={()=>{console.log(adminBlog);setBoo(true)}}>{blog.title}</h5>
+              </div>
+            </div>
+              )
+          })}
+        </div>
         </div>
         {boo && 
             <>
@@ -28,11 +41,10 @@ function AdminPage() {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              ...
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">reject</button>
-              <button type="button" className="btn btn-primary">Submit</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
