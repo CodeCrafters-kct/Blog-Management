@@ -32,14 +32,14 @@ function LoginPage() {
             <div className="modal-body p-5 pt-0">
               <form className="">
                 <div className="form-floating mb-3">
+                  <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" onChange={(e)=>{setUsername(e.target.value)}}></input>
                   <label htmlFor="floatingInput">Email address</label>
-                  <input type="email" className="form-control rounded-3" id="floatingInput" placeholder="name@example.com" onChange={(e)=>{setUsername(e.target.value)}}></input>
-                  
+
                 </div>
                 <div className="form-floating mb-3">
-                  <label htmlFor="floatingPassword">Password</label>
                   <input type="password" className="form-control rounded-3" id="floatingPassword" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}></input>
-                  
+                  <label htmlFor="floatingPassword">Password</label>
+
                 </div>
                 <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={()=>{logi()}}>Login</button>
                 <small className="text-body-secondary">By clicking Login, you agree to the terms of use.</small>
