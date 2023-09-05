@@ -167,7 +167,6 @@ const AppProvider=({children})=>{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             }
-
         })
             if(res.data.message){
                 alert(res.data.message);

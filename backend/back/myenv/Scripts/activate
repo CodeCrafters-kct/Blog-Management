@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="P:\Full Stack\Blog-Management\backend\back\myenv"
+VIRTUAL_ENV="C:\Users\akash\OneDrive\Desktop\Blog_project\backend\back\myenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
